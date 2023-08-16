@@ -1,5 +1,8 @@
 package com.myboard.board.domain;
 
+import com.myboard.type.Category;
+import com.myboard.type.Status;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
