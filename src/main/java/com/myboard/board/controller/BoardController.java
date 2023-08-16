@@ -1,5 +1,6 @@
 package com.myboard.board.controller;
 
+import com.myboard.board.dto.BoardDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
