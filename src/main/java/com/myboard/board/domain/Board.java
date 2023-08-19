@@ -22,7 +22,8 @@ public class Board {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    private String thumnail;
+    @Setter
+    private String thumbnail;
 
     private Long member_id; //TODO : member Many ToOne 관계 형성
 
