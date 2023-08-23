@@ -3,13 +3,14 @@ package com.myboard.board.controller;
 import com.myboard.board.dto.BoardDto;
 import com.myboard.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -39,5 +40,30 @@ public class BoardController {
         Long boardId = boardService.save(dto, thumbnail);
 
         return "redirect:/board/" + boardId;
+    }
+
+    @GetMapping("/{category}")
+    public String boardList(
+            @PathVariable String category,
+            Model model,
+            @PageableDefault(size = 6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable
+    ) {
+        Page<BoardDto.ListResponse> boards;
+
+        // TODO: 상수화
+        if (category.equals("common")) {
+            boards = boardService.findAllByCategory(COMMON, pageable);
+            model.addAttribute("categoryTitle", "새싹 회원");
+        } else if (category.equals("pro")) {
+            boards = boardService.findAllByCategory(PRO, pageable);
+            model.addAttribute("categoryTitle", "우수 회원");
+        } else {
+            throw new RuntimeException(); // TODO: 커스텀 Exception 처리
+        }
+        model.addAttribute("boards", boards);
+        model.addAttribute("category", category);
+        model.addAttribute("maxPage", 5);
+
+        return "board/boards";
     }
 }
