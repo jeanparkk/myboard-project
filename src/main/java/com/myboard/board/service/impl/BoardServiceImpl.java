@@ -6,6 +6,8 @@ import com.myboard.board.repository.BoardRepository;
 import com.myboard.board.service.BoardService;
 import com.myboard.type.Category;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -62,8 +64,10 @@ public class BoardServiceImpl implements BoardService {
         return homeDir + File.separator + uploadFolderName + File.separator + uuid + thumbnailOriginalName;
     }
 
-    public List<BoardDto.ListResponse> findAllByCategory(Category category) {
-        return null;
+    public Page<BoardDto.ListResponse> findAllByCategory(Category category, Pageable pageable) {
+        Page<Board> boards = boardRepository.findAllByCategoryAndStatus(category, ACTIVE, pageable);
+
+        return boards.map(BoardDto.ListResponse::fromEntity);
     }
 
     public BoardDto.DetailResponse findById(Long id) {
