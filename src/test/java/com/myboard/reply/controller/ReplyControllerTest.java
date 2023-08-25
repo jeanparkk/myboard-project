@@ -1,7 +1,7 @@
 package com.myboard.reply.controller;
 
 import com.myboard.reply.dto.ReplyDto;
-import com.myboard.reply.service.ReplyServiceImpl;
+import com.myboard.reply.service.impl.ReplyServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

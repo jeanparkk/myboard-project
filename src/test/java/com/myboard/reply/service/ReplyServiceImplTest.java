@@ -3,12 +3,10 @@ package com.myboard.reply.service;
 import com.myboard.reply.domain.Reply;
 import com.myboard.reply.dto.ReplyDto;
 import com.myboard.reply.repository.ReplyRepository;
+import com.myboard.reply.service.impl.ReplyServiceImpl;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
