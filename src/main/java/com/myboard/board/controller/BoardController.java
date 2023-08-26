@@ -15,6 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
+import static com.myboard.type.Category.COMMON;
+import static com.myboard.type.Category.PRO;
+
 @RequiredArgsConstructor
 @RequestMapping("/board")
 @Controller
