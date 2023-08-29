@@ -1,5 +1,6 @@
 package com.myboard.reply.controller;
 
+import com.myboard.board.exception.GlobalExceptionHandler;
 import com.myboard.reply.dto.ReplyDto;
 import com.myboard.reply.service.ReplyService;
 import com.myboard.reply.service.impl.ReplyServiceImpl;
