@@ -2,8 +2,10 @@ package com.myboard.member.service.impl;
 
 import com.myboard.board.exception.MemberException;
 import com.myboard.components.MailComponents;
+import com.myboard.member.domain.EmailAuth;
 import com.myboard.member.domain.Member;
 import com.myboard.member.dto.MemberRegistration;
+import com.myboard.member.repository.EmailAuthRepository;
 import com.myboard.member.repository.MemberRepository;
 import com.myboard.member.service.MemberService;
 import com.myboard.response.dto.CommonResult;
@@ -17,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static com.myboard.member.type.MemberRole.COMMON;
 import static com.myboard.member.type.MemberStatus.ACTIVE;
 import static com.myboard.member.type.MemberStatus.INACTIVE;
-import static com.myboard.response.type.ErrorCode.ALREADY_EXISTS_EMAIL;
+import static com.myboard.response.type.ErrorCode.*;
 
 @Service
 @RequiredArgsConstructor
