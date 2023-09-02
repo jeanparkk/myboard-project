@@ -1,7 +1,8 @@
 package com.myboard.member.service.impl;
 
+import com.myboard.board.components.MailComponents;
 import com.myboard.board.exception.MemberException;
-import com.myboard.components.MailComponents;
+
 import com.myboard.member.domain.EmailAuth;
 import com.myboard.member.domain.Member;
 import com.myboard.member.dto.MemberRegistration;

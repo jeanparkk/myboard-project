@@ -5,10 +5,12 @@ import com.myboard.response.dto.ListResult;
 import com.myboard.response.dto.SingleResult;
 import com.myboard.response.service.ResponseService;
 import com.myboard.response.type.ErrorCode;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.myboard.response.type.SuccessCode.SUCCESS;
 
 @Service
 public class ResponseServiceImpl implements ResponseService {
