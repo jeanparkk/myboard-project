@@ -2,7 +2,10 @@ package com.myboard.board.controller;
 
 import com.myboard.board.dto.BoardDto;
 import com.myboard.board.service.BoardService;
+import com.myboard.board.utils.ImageUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+
+import java.net.MalformedURLException;
 
 import static com.myboard.type.Category.COMMON;
 import static com.myboard.type.Category.PRO;
@@ -70,5 +75,13 @@ public class BoardController {
         model.addAttribute("maxPage", 5);
 
         return "board/boards";
+    }
+
+    @ResponseBody
+    @GetMapping("/image/{filename}")
+    public Resource thumbnailImage(@PathVariable String filename) throws MalformedURLException {
+        String fullPath = ImageUtils.getFullPath(filename);
+
+        return new UrlResource("file:" + fullPath);
     }
 }
